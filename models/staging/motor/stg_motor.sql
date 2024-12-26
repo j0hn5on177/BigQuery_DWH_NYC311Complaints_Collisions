@@ -1,0 +1,30 @@
+{{ config(materialized='view') }}
+
+SELECT
+    CAST(zip AS INT) AS zip,
+    BOROUGH,
+    streetname AS street_name,
+    cross_street1,
+    persons_injured,
+    persons_killed,
+    pedestrians_injured,
+    pedestrians_killed,
+    cyclists_injured,
+    cyclists_killed,
+    motorists_injured,
+    motorists_killed,
+    contributing_factor_vehicle1,
+    contributing_factor_vehicle2,
+    contributing_factor_vehicle3,
+    contributing_factor_vehicle4,
+    contributing_factor_vehicle5,
+    vehicle_type_1,
+    vehicle_type_2,
+    vehicle_type_3,
+    vehicle_type_4,
+    vehicle_type_5,
+    CAST(CONCAT(crash_date, ' ', crash_time, ':00') AS DATETIME) AS crash_datetime,
+    LATITUDE AS latitude,
+    LONGITUDE AS longitude,
+    LOCATION AS location
+FROM {{ source('311_SR', 'motor') }}

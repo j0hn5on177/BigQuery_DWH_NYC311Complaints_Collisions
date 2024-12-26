@@ -1,0 +1,6 @@
+version: 2
+sources:
+  - name: 311_SR
+    tables:
+      - name: motor
+      - name: new_311_SR
